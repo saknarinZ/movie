@@ -9,7 +9,7 @@ import { SeviceService } from 'src/app/sevices/sevice.service';
   styleUrls: ['./seat.component.scss']
 })
 export class SeatComponent implements OnInit {
-  SEAT: seatRow[];
+  SEAT: seatRow[] = [];
   constructor(
     private activeRuute: ActivatedRoute,
     private SeviceService: SeviceService) {
@@ -18,6 +18,7 @@ export class SeatComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.getseat()
 
   }
@@ -26,8 +27,35 @@ export class SeatComponent implements OnInit {
 
   }
 
+  status(seat) {
+    if (seat.status=="BUSY"){
+      return;
+    }
+    if (seat.status == "IDLE") {
+      seat.status = "MARKING"
+    }
+    else {
+      seat.status = "IDLE"
+    }
+
+    // this.SEAT.forEach(row => {
+    //   row.seats.forEach(seat => {
+    //     if (seat.id == se.id) {
+    //       if (seat.status == "IDLE") {
+    //         seat.status = "BUSY"
+    //       }
+    //       else {
+    //         seat.status = "IDLE"
+    //       }
+    //       console.log("TCL: SeatComponent -> status -> seat", seat)
+    //     }
+    //   })
+    // })
+
+  }
+
   getseat() {
     this.SeviceService.getseat().subscribe(SEAT => this.SEAT = SEAT);
-    console.log("TCL: ProductComponent -> getmovie -> this.Movies", this.SEAT)
+
   }
 }

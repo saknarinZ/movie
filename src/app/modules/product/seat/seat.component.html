@@ -12,7 +12,15 @@
   <br><br><br>
   <p *ngFor="let row of SEAT">
     {{row.row}}
-    <button *ngFor="let seat of row.seats " type="button" class="btn">{{seat.no}}</button>
+    <!-- <a *ngFor="let seat of row.seats" class="btn" (click)="status(seat)"
+      [ngClass]="{'btn-light':seat.status=='IDLE','btn-danger':seat.status=='BUSY','btn-primary':seat.status=='MARKING'}">
+      {{seat.no}}
+  </a> -->
+    <button *ngFor="let seat of row.seats " type="button" class="btn" (click)="status(seat)"
+      [ngClass]="{'btn-light':seat.status=='IDLE','btn-danger':seat.status=='BUSY','btn-primary':seat.status=='MARKING'}"
+      [disabled]="seat.status =='BUSY'">
+      {{seat.no}}
+    </button>
     {{row.row}}
   </p>
   <p></p>
