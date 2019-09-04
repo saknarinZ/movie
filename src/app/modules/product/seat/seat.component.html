@@ -1,0 +1,19 @@
+<div class="container">
+
+  <div class="d-flex justify-content-between align-items-center">
+    <div class=""></div>
+    <div class="">
+      <p class="m-0"> โรงหนัง</p>
+    </div>
+    <div class=""> <button type="button" class="btn btn-primary">ซื้อตั๋ว</button></div>
+  </div>
+
+  <button type="button" style="width: 98%;"></button>
+  <br><br><br>
+  <p *ngFor="let row of SEAT">
+    {{row.row}}
+    <button *ngFor="let seat of row.seats " type="button" class="btn">{{seat.no}}</button>
+    {{row.row}}
+  </p>
+  <p></p>
+</div>

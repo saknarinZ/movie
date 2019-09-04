@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <h1>จองที่นั่งดูหนังออนไลน์</h1>
+</div>
+
+
+<div class="container-fluid">
+  <div class="row" >
+
+    <div class="col-sm-2" *ngFor="let movie of Movies ">
+      <img class="img-profile" src="./assets/img/{{movie?.id}}.jpg" />
+      <br>
+      <br>
+       <div style="text-align: center;"><a  [routerLink]="['seat',movie?.id]" type="button" class="btn btn-primary">{{movie?.name}}</a></div>
+    </div>
+
+  </div>
+</div>
