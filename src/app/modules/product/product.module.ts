@@ -5,9 +5,10 @@ import { ProductRoutingModule } from './product-routing.module';
 import { ProductComponent } from './product.component';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { SeatComponent } from './seat/seat.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
-  declarations: [ProductComponent, SeatComponent],
+  declarations: [ProductComponent, SeatComponent, PaymentComponent],
   imports: [
     CommonModule,
     ProductRoutingModule,

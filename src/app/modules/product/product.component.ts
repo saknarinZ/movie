@@ -19,7 +19,7 @@ export class ProductComponent implements OnInit {
 
  getmovie(){
    this.SeviceService.getMovie().subscribe(Movies => this.Movies = Movies);
-   console.log("TCL: ProductComponent -> getmovie -> this.Movies", this.Movies)
+
  }
 
  seat(){
