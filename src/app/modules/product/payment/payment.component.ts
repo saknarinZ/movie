@@ -9,10 +9,11 @@ import { ActivatedRoute } from '@angular/router';
 export class PaymentComponent implements OnInit {
   id
   constructor(private activeRuute: ActivatedRoute) {
-    this.id = this.activeRuute.snapshot.paramMap.get('id');
+  this.id = this.activeRuute.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
+
   }
 
 }
