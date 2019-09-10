@@ -26,6 +26,8 @@ export class SeatComponent implements OnInit {
   }
 
   status(seat) {
+
+    console.log("TCL: SeatComponent -> status -> seat", seat)
     if (seat.status=="BUSY"){
       return;
     }
@@ -35,7 +37,10 @@ export class SeatComponent implements OnInit {
     else {
       seat.status = "IDLE"
     }
-         console.log("TCL: SeatComponent -> status -> seat", seat)
+
+    this.SeviceService.getseatmarking()
+    console.log("TCL: SeatComponent -> status -> this.SeviceService.getseatmarking()", this.SeviceService.getseatmarking())
+
   }
 
   totalPrice(){

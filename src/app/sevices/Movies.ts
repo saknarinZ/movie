@@ -11,7 +11,7 @@ export interface seat {
   id: number
   no: number
   price: number
-  status: 'IDLE' | 'BUSY'
+  status: 'IDLE' | 'BUSY' | 'MARKING'
 }
 
 export const MOVIES: Movie[] = [

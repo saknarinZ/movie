@@ -12,13 +12,28 @@ export class SeviceService {
 
   constructor() { }
 
-  getMovie():Observable<Movie[]>{
-    return of (MOVIES);
+  getMovie(): Observable<Movie[]> {
+    return of(MOVIES);
   }
 
-  getseat(){
-    return of (SEAT);
+  getmoviebyid(id) {
+    return of(MOVIES.find(res => id == res.id));
   }
 
+  getseat() {
+    return of(SEAT);
+  }
 
+  getseatmarking() {
+    let marking = []
+    SEAT.forEach((seatrow) => {
+      seatrow.seats.forEach((seat)=>{
+       if ( seat.status == 'MARKING'){
+        marking.push(seat)
+       }
+      })
+    })
+    return marking;
+
+  }
 }
