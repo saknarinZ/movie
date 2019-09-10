@@ -9,22 +9,26 @@ import { Movie } from 'src/app/sevices/Movies';
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
+  Numseats: any;
+  total: number;
   id
   Movies: Movie[];
   constructor(private activeRuute: ActivatedRoute,
     private SeviceService: SeviceService) {
     this.id = this.activeRuute.snapshot.paramMap.get('id');
-    console.log("TCL: PaymentComponent -> constructor -> id", this.id)
   }
 
   ngOnInit() {
     this.getmoviebyid()
+    this.total = this.SeviceService.gettotalPrice();
+    console.log("TCL: PaymentComponent -> ngOnInit -> this.total", this.total)
+    this.Numseats = this.SeviceService.getnumseat();
   }
 
 
   getmoviebyid() {
-    this.SeviceService.getmoviebyid(this.id).subscribe((Movies: any) =>
-    { return this.Movies = Movies });
+    this.SeviceService.getmoviebyid(this.id).subscribe((Movies: any) => { return this.Movies = Movies });
   }
+
 
 }

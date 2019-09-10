@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { seatRow, Movie } from 'src/app/sevices/Movies';
 import { SeviceService } from 'src/app/sevices/sevice.service';
@@ -9,26 +9,32 @@ import { SeviceService } from 'src/app/sevices/sevice.service';
   styleUrls: ['./seat.component.scss']
 })
 export class SeatComponent implements OnInit {
+  Numseats: any;
   Movies: Movie[];
   SEAT: seatRow[] = [];
   id
+  price: number;
   constructor(
     private activeRuute: ActivatedRoute,
     private SeviceService: SeviceService) {
-      this.id = this.activeRuute.snapshot.paramMap.get('id');
+    this.id = this.activeRuute.snapshot.paramMap.get('id');
 
   }
 
   ngOnInit() {
-
     this.getseat()
 
   }
 
+  getseat() {
+    this.SeviceService.getseat().subscribe(SEAT => this.SEAT = SEAT);
+
+
+  }
   status(seat) {
 
-    console.log("TCL: SeatComponent -> status -> seat", seat)
-    if (seat.status=="BUSY"){
+
+    if (seat.status == "BUSY") {
       return;
     }
     if (seat.status == "IDLE") {
@@ -38,19 +44,24 @@ export class SeatComponent implements OnInit {
       seat.status = "IDLE"
     }
 
-    this.SeviceService.getseatmarking()
-    console.log("TCL: SeatComponent -> status -> this.SeviceService.getseatmarking()", this.SeviceService.getseatmarking())
+  }
+
+  totalPrice() {
+    this.Numseats = this.SeviceService.getseatmarking().length
+    this.price = 0;
+    this.SeviceService.getseatmarking().forEach((seatmarking) => {
+      this.SEAT.map((seatrow) => {
+        seatrow.seats.map((seat) => {
+          if (seat.id == seatmarking.id) {
+            this.price += seat.price
+            seat.status = "BUSY"
+            this.SeviceService.settotalPrice(this.price,this.Numseats);
+          }
+        })
+      })
+    })
 
   }
 
-  totalPrice(){
-
-  }
-
-  getseat() {
-    this.SeviceService.getseat().subscribe(SEAT => this.SEAT = SEAT);
-    this.SEAT.reverse();
-
-  }
 
 }

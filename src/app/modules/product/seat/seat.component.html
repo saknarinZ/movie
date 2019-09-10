@@ -3,9 +3,9 @@
   <div class="d-flex justify-content-between align-items-center">
     <div class=""></div>
     <div class="">
-      <p class="m-0"> โรงหนัง</p>
+      <p class="m-0"> โรงหนัง {{price}}</p>
     </div>
-    <div class=""> <a type="button" [routerLink]="['/', 'product', 'payment', id]" class="btn btn-primary">ซื้อตั๋ว</a></div>
+    <div class=""> <a type="button" (click)="totalPrice()" [routerLink]="['/', 'product', 'payment', id]" class="btn btn-primary">ซื้อตั๋ว</a></div>
   </div>
 
   <button type="button" style="width: 98%;"></button>

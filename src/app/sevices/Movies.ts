@@ -31,7 +31,7 @@ export const MOVIES: Movie[] = [
 
 export const SEAT: seatRow[] = [
   {
-    row: 'A',
+    row: 'G',
     seats: [
       {id: 1, no: 1,status:'BUSY'  ,price: 100},
       {id: 2, no: 2,status: 'IDLE' ,price: 100},
@@ -51,7 +51,7 @@ export const SEAT: seatRow[] = [
     ]
   },
   {
-    row: 'B',
+    row: 'F',
     seats: [
       {id: 16, no: 1, status: 'IDLE',price: 100},
       {id: 17, no: 2,status: 'IDLE',price: 100},
@@ -71,7 +71,7 @@ export const SEAT: seatRow[] = [
     ]
   },
   {
-    row: 'C',
+    row: 'E',
     seats: [
       {id: 31, no: 1, status: 'IDLE' ,price: 80},
       {id: 32, no: 2,status: 'IDLE',price: 80},
@@ -111,7 +111,7 @@ export const SEAT: seatRow[] = [
     ]
   },
   {
-    row: 'E',
+    row: 'C',
     seats: [
       {id: 61, no: 1, status: 'IDLE',price: 80},
       {id: 62, no: 2,status: 'IDLE',price: 80},
@@ -131,7 +131,7 @@ export const SEAT: seatRow[] = [
     ]
   },
   {
-    row: 'F',
+    row: 'B',
     seats: [
       {id: 76, no: 1, status: 'BUSY',price: 80},
       {id: 77, no: 2,status: 'BUSY',price: 80},
@@ -151,7 +151,7 @@ export const SEAT: seatRow[] = [
     ]
   },
   {
-    row: 'G',
+    row: 'A',
     seats: [
       {id: 91, no: 1, status: 'BUSY',price: 80},
       {id: 92, no: 2,status: 'BUSY',price: 80},
