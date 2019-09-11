@@ -12,6 +12,8 @@ import { Movie, MOVIES, SEAT } from './Movies';
 export class SeviceService {
   totalPrice: number;
   numseats: any;
+  priceS: number
+  pricevip: number;
   constructor() { }
 
   getMovie(): Observable<Movie[]> {
@@ -40,10 +42,8 @@ export class SeviceService {
 
   }
 
-  settotalPrice(Price,Numseats) {
-
+  settotalPrice(Price, Numseats) {
     this.totalPrice = Price;
-
     this.numseats = Numseats;
   }
   gettotalPrice() {
@@ -51,6 +51,18 @@ export class SeviceService {
 
   }
 
+  setprice(priceS, pricevip) {
+    this.priceS = priceS
+    this.pricevip = pricevip
+  }
+
+
+  getpriceS() {
+    return this.priceS
+  }
+  getpricevip() {
+    return this.pricevip
+  }
   getnumseat() {
     return this.numseats;
   }

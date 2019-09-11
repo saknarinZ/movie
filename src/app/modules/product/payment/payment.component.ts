@@ -13,6 +13,8 @@ export class PaymentComponent implements OnInit {
   total: number;
   id
   Movies: Movie[];
+  priceS: number
+  pricevip: number;
   constructor(private activeRuute: ActivatedRoute,
     private SeviceService: SeviceService) {
     this.id = this.activeRuute.snapshot.paramMap.get('id');
@@ -21,8 +23,9 @@ export class PaymentComponent implements OnInit {
   ngOnInit() {
     this.getmoviebyid()
     this.total = this.SeviceService.gettotalPrice();
-    console.log("TCL: PaymentComponent -> ngOnInit -> this.total", this.total)
     this.Numseats = this.SeviceService.getnumseat();
+    this.priceS = this.SeviceService.getpriceS();
+    this.pricevip = this.SeviceService.getpricevip();
   }
 
 

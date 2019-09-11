@@ -5,7 +5,8 @@
     <div class="">
       <p class="m-0"> โรงหนัง {{price}}</p>
     </div>
-    <div class=""> <a type="button" (click)="totalPrice()" [routerLink]="['/', 'product', 'payment', id]" class="btn btn-primary">ซื้อตั๋ว</a></div>
+    <div class=""> <button type="button" (click)="buy()" [routerLink]="['/', 'product', 'payment', id]" class="btn btn-primary"
+      [disabled]="price == 0 ">ซื้อตั๋ว</button></div>
   </div>
 
   <button type="button" style="width: 98%;"></button>

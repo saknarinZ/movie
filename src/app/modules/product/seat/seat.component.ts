@@ -13,7 +13,9 @@ export class SeatComponent implements OnInit {
   Movies: Movie[];
   SEAT: seatRow[] = [];
   id
-  price: number;
+  price = 0;
+  priceS = 0;
+  pricevip = 0;
   constructor(
     private activeRuute: ActivatedRoute,
     private SeviceService: SeviceService) {
@@ -33,7 +35,6 @@ export class SeatComponent implements OnInit {
   }
   status(seat) {
 
-
     if (seat.status == "BUSY") {
       return;
     }
@@ -43,6 +44,7 @@ export class SeatComponent implements OnInit {
     else {
       seat.status = "IDLE"
     }
+   this.totalPrice()
 
   }
 
@@ -50,18 +52,45 @@ export class SeatComponent implements OnInit {
     this.Numseats = this.SeviceService.getseatmarking().length
     this.price = 0;
     this.SeviceService.getseatmarking().forEach((seatmarking) => {
+      console.log("TCL: SeatComponent -> buy -> seatmarking", seatmarking)
+      this.SEAT.map((seatrow) => {
+        seatrow.seats.map((seat) => {
+
+
+          if (seat.id == seatmarking.id) {
+            this.price += seat.price
+            // seat.status = "BUSY"
+            this.SeviceService.settotalPrice(this.price,this.Numseats);
+            if ( seat.price == 80 ) {
+              this.priceS = seat.price
+             }
+             if ( seat.price == 100 ) {
+              this.pricevip = seat.price
+             }
+             this.SeviceService.setprice(this.priceS,this.pricevip);
+          }
+
+
+        })
+      })
+    })
+
+  }
+
+
+  buy() {
+    this.SeviceService.getseatmarking().forEach((seatmarking) => {
       this.SEAT.map((seatrow) => {
         seatrow.seats.map((seat) => {
           if (seat.id == seatmarking.id) {
-            this.price += seat.price
             seat.status = "BUSY"
-            this.SeviceService.settotalPrice(this.price,this.Numseats);
           }
         })
       })
     })
 
   }
+
 
 
 }
